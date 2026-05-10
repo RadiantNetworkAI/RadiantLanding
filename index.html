@@ -705,6 +705,10 @@
       </p>
       <div class="cta-actions">
         <a href="mailto:radiantnetwork@proton.me" class="btn-primary">Request a Shadow Run</a>
+        <button onclick="openDemo()" class="btn-ghost" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:none">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite;flex-shrink:0"></span>
+          View Live Demo
+        </button>
         <a href="mailto:radiantnetwork@proton.me" class="btn-ghost">Get in Touch</a>
       </div>
       <div class="contact-line">
@@ -723,7 +727,72 @@
     </div>
   </footer>
 
+  <!-- Demo password modal -->
+  <div id="demo-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(4,8,16,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+    <div style="background:var(--bg-panel);border:1px solid var(--border-accent);border-radius:16px;padding:36px 32px;width:100%;max-width:380px;margin:24px;position:relative">
+      <button onclick="closeDemo()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);cursor:pointer;font-size:18px;line-height:1">✕</button>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1)">Radiant Network</div>
+          <div style="font-size:10px;color:var(--text-3);font-family:'JetBrains Mono',monospace">Live Demo Access</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--text-2);line-height:1.6;margin-bottom:20px">
+        This is an investor preview of the full end-to-end workflow simulation. Enter the access code to continue.
+      </p>
+      <input id="demo-pw" type="password" placeholder="Access code"
+        style="width:100%;padding:11px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-1);font-size:13px;font-family:'JetBrains Mono',monospace;outline:none;margin-bottom:8px;transition:border-color .15s"
+        onfocus="this.style.borderColor='rgba(61,126,246,0.6)'"
+        onblur="this.style.borderColor='var(--border)'"
+        onkeydown="if(event.key==='Enter')submitDemo()" />
+      <p id="demo-err" style="font-size:11px;color:#f87171;margin-bottom:12px;min-height:16px"></p>
+      <button onclick="submitDemo()"
+        style="width:100%;padding:12px;border-radius:8px;background:var(--blue);color:white;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:opacity .15s"
+        onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        Enter Demo
+      </button>
+    </div>
+  </div>
+
   <script>
+    // ── Demo access config ─────────────────────────────────────────
+    const DEMO_PASSWORD = 'radiant';
+    const DEMO_URL      = 'https://snore-snipping-umpire.ngrok-free.dev/demo';
+    // ──────────────────────────────────────────────────────────────
+
+    function openDemo() {
+      document.getElementById('demo-modal').style.display = 'flex';
+      document.getElementById('demo-err').textContent = '';
+      document.getElementById('demo-pw').value = '';
+      setTimeout(() => document.getElementById('demo-pw').focus(), 50);
+    }
+    function closeDemo() {
+      document.getElementById('demo-modal').style.display = 'none';
+    }
+    function submitDemo() {
+      const val = document.getElementById('demo-pw').value.trim();
+      if (val === DEMO_PASSWORD) {
+        window.open(DEMO_URL, '_blank');
+        closeDemo();
+      } else {
+        const err = document.getElementById('demo-err');
+        const input = document.getElementById('demo-pw');
+        err.textContent = 'Incorrect access code.';
+        input.style.borderColor = 'rgba(248,113,113,0.6)';
+        input.style.animation = 'shake .3s ease';
+        setTimeout(() => { input.style.animation = ''; input.style.borderColor = 'var(--border)'; }, 400);
+      }
+    }
+    document.getElementById('demo-modal').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeDemo();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeDemo();
+    });
+
     // Intersection-observer fade-ins
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }),
@@ -731,5 +800,13 @@
     );
     document.querySelectorAll('.fade').forEach(el => observer.observe(el));
   </script>
+
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%       { transform: translateX(-6px); }
+      75%       { transform: translateX(6px); }
+    }
+  </style>
 </body>
 </html>
