@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiant Network — radiantnetwork.ai</title>
+  <meta name="description" content="The AI-native operating layer for modern radiology networks. Workforce orchestration, multi-state licensing intelligence, and AI-assisted clinical workflow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080d16;
+      --bg-panel:  #0d1525;
+      --bg-card:   #111c30;
+      --border:    rgba(255,255,255,0.07);
+      --border-accent: rgba(61,126,246,0.3);
+      --blue:      #3d7ef6;
+      --violet:    #a78bfa;
+      --emerald:   #34d399;
+      --cyan:      #22d3ee;
+      --amber:     #fbbf24;
+      --text-1:    #e2e8f0;
+      --text-2:    #94a3b8;
+      --text-3:    #475569;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Grid background ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(61,126,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61,126,246,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Glow orbs ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .orb-blue   { width: 600px; height: 600px; background: #1e3a8a; top: -200px; left: -150px; }
+    .orb-violet { width: 400px; height: 400px; background: #4c1d95; bottom: 100px; right: -100px; }
+
+    /* ── Layout ── */
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      background: rgba(8,13,22,0.8);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-icon svg { width: 15px; height: 15px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .logo-name  { font-size: 13px; font-weight: 700; color: var(--text-1); letter-spacing: 0.02em; }
+    .logo-domain { font-size: 10px; color: var(--text-3); font-family: 'JetBrains Mono', monospace; }
+    .nav-cta {
+      font-size: 12px; font-weight: 600;
+      padding: 7px 16px; border-radius: 6px;
+      background: var(--blue); color: #fff;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── Sections ── */
+    section { padding: 80px 0; }
+
+    /* ── Hero ── */
+    .hero { padding: 140px 0 80px; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(61,126,246,0.35);
+      background: rgba(61,126,246,0.08);
+      border-radius: 100px; padding: 5px 12px;
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .3; }
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+    .hero-actions {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap-8px;
+      font-size: 13px; font-weight: 600;
+      padding: 12px 24px; border-radius: 8px;
+      background: var(--blue); color: #fff;
+      text-decoration: none;
+      transition: opacity .15s, transform .15s;
+    }
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      font-size: 13px; font-weight: 500;
+      padding: 12px 24px; border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      text-decoration: none;
+      background: transparent;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.18); color: var(--text-1); }
+
+    /* ── Metrics strip ── */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 0 0 80px;
+    }
+    .metric {
+      background: var(--bg-panel);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .metric-value {
+      font-size: 28px; font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .metric-label {
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+
+    /* ── Section header ── */
+    .section-label {
+      font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    .section-head { margin-bottom: 40px; }
+
+    /* ── Three pillars ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .pillar {
+      background: var(--bg-panel);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      transition: border-color .2s, transform .2s;
+    }
+    .pillar:hover { transform: translateY(-2px); }
+    .pillar-blue   { border-color: rgba(61,126,246,0.2);  }
+    .pillar-violet { border-color: rgba(167,139,250,0.2); }
+    .pillar-emerald{ border-color: rgba(52,211,153,0.2);  }
+    .pillar-blue:hover   { border-color: rgba(61,126,246,0.45);  }
+    .pillar-violet:hover { border-color: rgba(167,139,250,0.45); }
+    .pillar-emerald:hover{ border-color: rgba(52,211,153,0.45);  }
+    .pillar-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .pillar-icon svg { width: 16px; height: 16px; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .pillar-label { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .pillar-tagline { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 10px; line-height: 1.4; }
+    .pillar-body { font-size: 12px; color: var(--text-3); line-height: 1.6; margin-bottom: 14px; }
+    .pillar-points { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .pillar-points li {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 11px; color: var(--text-3);
+    }
+    .pillar-points li::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .p-blue   .pillar-label, .p-blue   .pillar-points li::before { color: var(--blue);    background: var(--blue);    }
+    .p-violet .pillar-label, .p-violet .pillar-points li::before { color: var(--violet);  background: var(--violet);  }
+    .p-emerald .pillar-label, .p-emerald .pillar-points li::before { color: var(--emerald); background: var(--emerald); }
+
+    /* ── Problem / positioning ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-3);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .card-header svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .card-body { padding: 20px; }
+    .pain-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 12px; border-radius: 7px;
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.12);
+      margin-bottom: 8px;
+    }
+    .pain-dot { width: 5px; height: 5px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 5px; }
+    .pain-text { font-size: 11px; color: var(--text-2); line-height: 1.5; }
+    .diff-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      margin-bottom: 6px;
+    }
+    .diff-item.us {
+      border-color: rgba(52,211,153,0.25);
+      background: rgba(52,211,153,0.04);
+    }
+    .diff-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+    .diff-item.us .diff-dot { background: var(--emerald); }
+    .diff-name { font-size: 11px; font-weight: 600; color: var(--text-2); width: 130px; flex-shrink: 0; }
+    .diff-item.us .diff-name { color: var(--emerald); }
+    .diff-desc { font-size: 10px; color: var(--text-3); }
+
+    /* ── Integration flow ── */
+    .flow {
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: wrap; margin: 20px 0 24px;
+    }
+    .flow-node {
+      padding: 8px 12px; border-radius: 7px;
+      text-align: center;
+    }
+    .flow-node-label { font-size: 9px; font-weight: 700; }
+    .flow-node-sub   { font-size: 8px; color: var(--text-3); margin-top: 2px; }
+    .flow-arrow { color: var(--text-3); font-size: 12px; flex-shrink: 0; }
+    .vendor-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      margin-bottom: 20px;
+    }
+    .vendor-card {
+      padding: 10px; border-radius: 7px; text-align: center;
+      background: rgba(34,211,238,0.04);
+      border: 1px solid rgba(34,211,238,0.15);
+    }
+    .vendor-name { font-size: 11px; font-weight: 600; color: var(--cyan); margin-bottom: 2px; }
+    .vendor-desc { font-size: 9px; color: var(--text-3); }
+    .pull-quote {
+      padding: 14px 18px; border-radius: 8px;
+      border-left: 3px solid;
+      font-size: 12px; color: var(--text-2);
+      line-height: 1.6; font-style: italic;
+    }
+
+    /* ── Where we are ── */
+    .stage-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; margin-bottom: 20px;
+    }
+    .stage-item { }
+    .stage-label { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .stage-value { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+    .stage-sub   { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 64px 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border-accent);
+      background: rgba(61,126,246,0.03);
+      margin-bottom: 80px;
+    }
+    .cta-section h2 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800; letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 14px; color: var(--text-2);
+      line-height: 1.65; max-width: 440px;
+      margin: 0 auto 32px;
+    }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .contact-line { font-size: 11px; color: var(--text-3); }
+    .contact-line strong { color: var(--text-2); font-weight: 600; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-left { font-size: 11px; color: var(--text-3); }
+    .footer-right { font-size: 11px; color: var(--text-3); font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Fade-in animations ── */
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade.in { opacity: 1; transform: none; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── Cyan section accent ── */
+    .cyan-border { border-color: rgba(34,211,238,0.2) !important; }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-blue"></div>
+  <div class="orb orb-violet"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">Radiant Network</div>
+          <div class="logo-domain">radiantnetwork.ai</div>
+        </div>
+      </a>
+      <a href="mailto:radiantnetwork@proton.me" class="nav-cta">Request a Shadow Run</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="wrap">
+    <div class="hero fade">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Prototype · Investor Demo Ready
+      </div>
+      <h1>The <em>AI-native operating layer</em><br>for modern radiology networks</h1>
+      <p class="hero-sub">
+        Workforce orchestration, multi-state licensing intelligence, and AI-assisted clinical workflow —
+        unified into a single operational layer so radiology networks can scale without fragmentation.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:radiantnetwork@proton.me" class="btn-primary">Request a Shadow Run</a>
+        <a href="mailto:radiantnetwork@proton.me" class="btn-ghost">radiantnetwork@proton.me</a>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics fade">
+      <div class="metric">
+        <div class="metric-value">&lt;8 min</div>
+        <div class="metric-label">STAT turnaround</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">98.2%</div>
+        <div class="metric-label">First-pass claim rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">40+</div>
+        <div class="metric-label">IMLC states covered</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">14 sec</div>
+        <div class="metric-label">Auto-coding time</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Three Pillars -->
+  <section>
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="section-label">Platform</div>
+        <h2 class="section-title">Three pillars. One operational layer.</h2>
+        <p class="section-sub">
+          The pieces that make radiology networks work — orchestration, compliance, and clinical AI —
+          finally connected in real time.
+        </p>
+      </div>
+      <div class="pillars">
+
+        <div class="pillar pillar-blue p-blue fade">
+          <div class="pillar-icon" style="background:rgba(61,126,246,0.1);border:1px solid rgba(61,126,246,0.25)">
+            <svg viewBox="0 0 24 24" style="stroke:var(--blue)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="pillar-label">Workforce Orchestration</div>
+          <div class="pillar-tagline">Right radiologist. Right study. Right now.</div>
+          <div class="pillar-body">Real-time routing across your credentialed radiologist network — filtered by state license, subspecialty, malpractice status, and live workload. STAT studies are never manually assigned.</div>
+          <ul class="pillar-points">
+            <li>Multi-state IMLC routing</li>
+            <li>Subspecialty matching</li>
+            <li>Workload balancing</li>
+            <li>Credentialing status checks</li>
+          </ul>
+        </div>
+
+        <div class="pillar pillar-violet p-violet fade">
+          <div class="pillar-icon" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.25)">
+            <svg viewBox="0 0 24 24" style="stroke:var(--violet)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="pillar-label">Licensing Intelligence</div>
+          <div class="pillar-tagline">Coverage gaps caught before they become compliance gaps.</div>
+          <div class="pillar-body">Continuous monitoring of multi-state license status, renewal timelines, and malpractice coverage across your entire radiologist network. What-if modeling shows exposure before it becomes a problem.</div>
+          <ul class="pillar-points">
+            <li>IMLC compact tracking</li>
+            <li>Renewal alert system</li>
+            <li>Coverage risk scoring</li>
+            <li>What-if scenario modeling</li>
+          </ul>
+        </div>
+
+        <div class="pillar pillar-emerald p-emerald fade">
+          <div class="pillar-icon" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25)">
+            <svg viewBox="0 0 24 24" style="stroke:var(--emerald)"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04z"/></svg>
+          </div>
+          <div class="pillar-label">AI-Assisted Workflow</div>
+          <div class="pillar-tagline">Decision support, not autonomous diagnosis.</div>
+          <div class="pillar-body">Claude Vision provides radiologists with pattern recognition and structured findings as a consultation layer — not a replacement. Auto-coding and claim submission complete the loop from read to reimbursement.</div>
+          <ul class="pillar-points">
+            <li>Claude Vision decision support</li>
+            <li>AI-radiologist consensus workflow</li>
+            <li>Auto CPT / ICD-10 coding</li>
+            <li>Claim submission &amp; tracking</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Problem + Positioning -->
+  <section>
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="section-label">Why now</div>
+        <h2 class="section-title">The problem is fragmentation.<br>We are the connective layer.</h2>
+      </div>
+      <div class="split">
+
+        <div class="card fade">
+          <div class="card-header">
+            <svg viewBox="0 0 24 24" style="stroke:#fbbf24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            The Problem
+          </div>
+          <div class="card-body">
+            <div class="pain-item"><div class="pain-dot"></div><div class="pain-text">STAT studies wait for manual radiologist assignment</div></div>
+            <div class="pain-item"><div class="pain-dot"></div><div class="pain-text">License lapses go undetected until a claim is denied</div></div>
+            <div class="pain-item"><div class="pain-dot"></div><div class="pain-text">Diagnostic AI flags sit in dashboards — no operational follow-through</div></div>
+            <div class="pain-item" style="margin-bottom:0"><div class="pain-dot"></div><div class="pain-text">Billing coding is manual, slow, and error-prone</div></div>
+          </div>
+        </div>
+
+        <div class="card fade">
+          <div class="card-header">
+            <svg viewBox="0 0 24 24" style="stroke:var(--emerald)"><polyline points="20 6 9 17 4 12"/></svg>
+            Our Position
+          </div>
+          <div class="card-body">
+            <div class="diff-item">
+              <div class="diff-dot"></div>
+              <div class="diff-name">Rad AI, Aidoc, Viz.ai</div>
+              <div class="diff-desc">Detecting findings in images</div>
+            </div>
+            <div class="diff-item">
+              <div class="diff-dot"></div>
+              <div class="diff-name">RIS / PACS vendors</div>
+              <div class="diff-desc">Study storage and basic workflow</div>
+            </div>
+            <div class="diff-item">
+              <div class="diff-dot"></div>
+              <div class="diff-name">Credentialing software</div>
+              <div class="diff-desc">Static license management</div>
+            </div>
+            <div class="diff-item us">
+              <div class="diff-dot"></div>
+              <div class="diff-name">Radiant Network</div>
+              <div class="diff-desc">Operational intelligence connecting all of it</div>
+            </div>
+            <div class="pull-quote" style="border-color:var(--blue);background:rgba(61,126,246,0.04);margin-top:14px">
+              We are not competing with diagnostic AI companies — we are the operational layer that makes all of them more useful.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Rad AI Integration -->
+  <section>
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="section-label">Integration</div>
+        <h2 class="section-title">Your existing diagnostic AI<br>investment doesn't go to waste.</h2>
+        <p class="section-sub">
+          Radiant Network imports findings from Rad AI, Aidoc, Viz.ai, and other vendors via
+          DICOM SR and HL7 FHIR. Their finding becomes our trigger.
+        </p>
+      </div>
+
+      <div class="card cyan-border fade">
+        <div class="card-header" style="color:var(--cyan)">
+          <svg viewBox="0 0 24 24" style="stroke:var(--cyan)"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Third-Party AI Integration
+          <span style="margin-left:auto;font-size:9px;padding:3px 7px;border-radius:4px;border:1px solid rgba(34,211,238,0.3);background:rgba(34,211,238,0.07);color:var(--cyan);font-weight:700;letter-spacing:0.08em">DICOM SR · HL7 FHIR</span>
+        </div>
+        <div class="card-body">
+
+          <div class="flow">
+            <div class="flow-node" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2)">
+              <div class="flow-node-label" style="color:var(--cyan)">Diagnostic AI</div>
+              <div class="flow-node-sub">Rad AI · Aidoc · Viz.ai</div>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-node" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2)">
+              <div class="flow-node-label" style="color:var(--cyan)">DICOM SR Import</div>
+              <div class="flow-node-sub">HL7 FHIR · structured</div>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-node" style="background:rgba(61,126,246,0.07);border:1px solid rgba(61,126,246,0.2)">
+              <div class="flow-node-label" style="color:var(--blue)">Radiant Routing</div>
+              <div class="flow-node-sub">IMLC · subspecialty</div>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-node" style="background:rgba(167,139,250,0.07);border:1px solid rgba(167,139,250,0.2)">
+              <div class="flow-node-label" style="color:var(--violet)">Physician Sign-Off</div>
+              <div class="flow-node-sub">Review · consensus</div>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-node" style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2)">
+              <div class="flow-node-label" style="color:var(--emerald)">Claim Filed</div>
+              <div class="flow-node-sub">CPT · ICD-10 · payer</div>
+            </div>
+          </div>
+
+          <div class="vendor-grid">
+            <div class="vendor-card"><div class="vendor-name">Rad AI</div><div class="vendor-desc">Triage &amp; prioritization</div></div>
+            <div class="vendor-card"><div class="vendor-name">Aidoc</div><div class="vendor-desc">Clinical AI platform</div></div>
+            <div class="vendor-card"><div class="vendor-name">Viz.ai</div><div class="vendor-desc">Care coordination AI</div></div>
+          </div>
+
+          <div class="pull-quote" style="border-color:var(--cyan);background:rgba(34,211,238,0.04)">
+            "Without Radiant Network, a Rad AI triage flag sits in a dashboard. With it, that flag triggers
+            credentialed routing, escalation, physician sign-off, and a filed claim — automatically."
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Where we are -->
+  <section>
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="section-label">Status</div>
+        <h2 class="section-title">Where we are.</h2>
+      </div>
+      <div class="card fade">
+        <div class="card-body">
+          <div class="stage-grid">
+            <div class="stage-item">
+              <div class="stage-label">Stage</div>
+              <div class="stage-value" style="color:var(--blue)">Prototype</div>
+              <div class="stage-sub">Investor demo ready</div>
+            </div>
+            <div class="stage-item">
+              <div class="stage-label">Next Step</div>
+              <div class="stage-value" style="color:var(--violet)">Shadow Run</div>
+              <div class="stage-sub">Real data · no patient impact</div>
+            </div>
+            <div class="stage-item">
+              <div class="stage-label">Goal</div>
+              <div class="stage-value" style="color:var(--emerald)">Series Seed</div>
+              <div class="stage-sub">Network + data access</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--text-3);line-height:1.65;border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+            This prototype demonstrates the full pipeline — intake to claim — with real AI (Claude Sonnet) and simulated DICOM data.
+            The shadow run phase connects to real hospital data in read-only mode: validating routing logic, license checks, and coding
+            accuracy without touching clinical workflow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="wrap">
+    <div class="cta-section fade">
+      <h2>Ready to see this with your data?</h2>
+      <p>
+        We're onboarding shadow run partners now — read-only access to your workflow data, no patient impact,
+        full validation of routing logic, license compliance, and billing accuracy before you commit to anything.
+      </p>
+      <div class="cta-actions">
+        <a href="mailto:radiantnetwork@proton.me" class="btn-primary">Request a Shadow Run</a>
+        <a href="mailto:radiantnetwork@proton.me" class="btn-ghost">Get in Touch</a>
+      </div>
+      <div class="contact-line">
+        <strong>Sam Brooker</strong> &nbsp;·&nbsp;
+        <span class="mono">radiantnetwork@proton.me</span> &nbsp;·&nbsp;
+        <span class="mono">radiantnetwork.ai</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">© 2025 Radiant Network · The AI-native operating layer for modern radiology networks</div>
+      <div class="footer-right">radiantnetwork.ai</div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection-observer fade-ins
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
