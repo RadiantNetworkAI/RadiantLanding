@@ -568,10 +568,20 @@
             <div style="font-size:48px;font-weight:900;letter-spacing:-0.04em;" class="grad">88%</div>
             <div style="font-size:11px;color:var(--t3)">software-only cost structure</div>
           </div>
-          <div class="card" style="text-align:center">
-            <div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">Pricing</div>
-            <div style="font-size:48px;font-weight:900;letter-spacing:-0.04em;color:var(--blue)">$3</div>
-            <div style="font-size:11px;color:var(--t3)">per study · usage-based</div>
+          <div class="card" style="padding:16px">
+            <div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;text-align:center">Pricing</div>
+            <div style="display:flex;gap:8px;margin-bottom:8px">
+              <div style="flex:1;text-align:center;padding:10px 6px;border-radius:8px;background:rgba(61,126,246,0.07);border:1px solid rgba(61,126,246,0.2)">
+                <div style="font-size:22px;font-weight:900;color:var(--blue);letter-spacing:-0.03em">$3</div>
+                <div style="font-size:8px;color:var(--t3);margin-top:2px">/ study · routing</div>
+              </div>
+              <div style="display:flex;align-items:center;color:var(--t3);font-size:12px">+</div>
+              <div style="flex:1;text-align:center;padding:10px 6px;border-radius:8px;background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2)">
+                <div style="font-size:22px;font-weight:900;color:var(--emerald);letter-spacing:-0.03em">1.5%</div>
+                <div style="font-size:8px;color:var(--t3);margin-top:2px">collections · billing</div>
+              </div>
+            </div>
+            <div style="font-size:9px;color:var(--t3);text-align:center">no seat licenses · no setup fees</div>
           </div>
         </div>
       </div>
@@ -582,60 +592,74 @@
   <div class="slide" id="s4">
     <div class="slide-content">
       <div class="eyebrow">Business Model</div>
-      <h2 class="slide-title">Simple, usage-based.<br><span class="grad">Scales with volume.</span></h2>
+      <h2 class="slide-title">Two tiers. Aligned with outcomes.<br><span class="grad">Scales with volume and value.</span></h2>
 
       <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
         <div>
-          <div class="card" style="margin-bottom:14px;text-align:center;padding:28px">
-            <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px">Price per study</div>
-            <div style="font-size:72px;font-weight:900;letter-spacing:-0.04em;line-height:1" class="grad">$3</div>
-            <div style="font-size:13px;color:var(--t2);margin-top:8px">No seat licenses. No setup fees.<br>Groups pay for what they use.</div>
+          <!-- Two-tier pricing -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+            <div class="card" style="text-align:center;padding:20px;background:rgba(61,126,246,0.05);border-color:rgba(61,126,246,0.25)">
+              <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Tier 1 · Operations</div>
+              <div style="font-size:44px;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--blue)">$3</div>
+              <div style="font-size:10px;color:var(--t3);margin-top:6px">per study</div>
+              <div style="font-size:9px;color:var(--blue);margin-top:8px;font-weight:600;line-height:1.4">Routing · Licensing<br>Workforce Orchestration</div>
+            </div>
+            <div class="card" style="text-align:center;padding:20px;background:rgba(52,211,153,0.05);border-color:rgba(52,211,153,0.25)">
+              <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Tier 2 · Revenue Cycle</div>
+              <div style="font-size:44px;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--emerald)">1.5<span style="font-size:24px">%</span></div>
+              <div style="font-size:10px;color:var(--t3);margin-top:6px">of net collections</div>
+              <div style="font-size:9px;color:var(--emerald);margin-top:8px;font-weight:600;line-height:1.4">Coding · Claims<br>Only on claims we file</div>
+            </div>
+          </div>
+          <div class="highlight" style="border-color:var(--violet);background:rgba(167,139,250,0.04);margin-bottom:14px;font-size:11px;color:var(--t2)">
+            Traditional billing companies charge <strong style="color:var(--t1)">4–8% of collections</strong> and still employ humans. Radiant charges <strong style="color:var(--violet)">$3 flat + 1.5%</strong> — fully automated, higher accuracy, zero headcount.
           </div>
 
           <div class="card">
             <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);margin-bottom:14px">Unit Economics — 10-Radiologist Group</div>
             <table class="pitch-table">
               <tr><td>Studies / month</td><td style="text-align:right"><strong>5,500</strong></td></tr>
-              <tr><td>Monthly revenue</td><td style="text-align:right"><strong style="color:var(--emerald)">$16,500</strong></td></tr>
-              <tr><td>Gross margin</td><td style="text-align:right"><strong>88%</strong></td></tr>
-              <tr><td>Gross profit / month</td><td style="text-align:right"><strong style="color:var(--emerald)">$14,520</strong></td></tr>
-              <tr><td>vs. coder salaries replaced</td><td style="text-align:right"><strong style="color:var(--red)">$12–15k / mo</strong></td></tr>
+              <tr><td>Tier 1 — routing ($3/study)</td><td style="text-align:right"><strong style="color:var(--blue)">$16,500</strong></td></tr>
+              <tr><td>Tier 2 — billing (1.5% × ~$130 avg)</td><td style="text-align:right"><strong style="color:var(--emerald)">$10,725</strong></td></tr>
+              <tr><td>Total MRR</td><td style="text-align:right"><strong style="color:var(--t1)">$27,225</strong></td></tr>
+              <tr><td>Gross margin</td><td style="text-align:right"><strong>~87%</strong></td></tr>
+              <tr><td>Denial recovery value (5%→&lt;2%)</td><td style="text-align:right"><strong style="color:var(--emerald)">~$21k / mo</strong></td></tr>
             </table>
             <div class="highlight" style="border-color:var(--emerald);background:rgba(52,211,153,0.04);margin-top:14px;font-size:12px;color:var(--t2)">
-              <strong style="color:var(--emerald)">Net saving to group: $0–3k/mo</strong> — Radiant costs less than the coders it replaces, while adding speed, accuracy, and compliance.
+              <strong style="color:var(--emerald)">Net ROI positive from day 1.</strong> Denial reduction alone recovers more than the fee difference vs. in-house coders — before accounting for speed, accuracy, and eliminated headcount.
             </div>
           </div>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:14px">
           <div class="card">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);margin-bottom:14px">Why $3/study works</div>
-            <div class="check-item"><span class="check-icon">✓</span><div><strong>Self-funding pitch.</strong> Groups replace $55–70k coders — Radiant costs a fraction.</div></div>
-            <div class="check-item"><span class="check-icon">✓</span><div><strong>No negotiation.</strong> Usage-based means no procurement process for small groups.</div></div>
-            <div class="check-item"><span class="check-icon">✓</span><div><strong>Volume scales linearly.</strong> 100-rad group = $55k/month at the same margin.</div></div>
-            <div class="check-item"><span class="check-icon">✓</span><div><strong>Network effect.</strong> Each group adds routing capacity for others in the IMLC network.</div></div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);margin-bottom:14px">Why the hybrid model wins</div>
+            <div class="check-item"><span class="check-icon">✓</span><div><strong>Skin in the game.</strong> We make more when groups collect more — incentives are perfectly aligned on coding accuracy and denial prevention.</div></div>
+            <div class="check-item"><span class="check-icon">✓</span><div><strong>Land with Tier 1.</strong> Groups start with routing and licensing ($3 flat), then add revenue cycle automation when ready. Natural expand motion.</div></div>
+            <div class="check-item"><span class="check-icon">✓</span><div><strong>Captures complexity.</strong> A brain MRI at $1,000 earns $15 in Tier 2. A plain film at $25 earns $0.38. Revenue scales with clinical value delivered.</div></div>
+            <div class="check-item"><span class="check-icon">✓</span><div><strong>No negotiation.</strong> Usage-based, no seat licenses, no setup fees — groups start immediately, billed on what flows through.</div></div>
           </div>
 
           <div class="card">
             <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);margin-bottom:14px">Revenue Milestones</div>
             <div style="margin-bottom:12px">
               <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-                <span style="font-size:12px;color:var(--t2)">Month 6</span>
-                <span style="font-size:14px;font-weight:700;color:var(--t1)">$9k MRR</span>
+                <span style="font-size:12px;color:var(--t2)">Month 6 · 5 groups</span>
+                <span style="font-size:14px;font-weight:700;color:var(--t1)">$15k MRR</span>
               </div>
               <div class="progress-bar"><div class="progress-fill" style="width:20%;background:var(--blue)"></div></div>
             </div>
             <div style="margin-bottom:12px">
               <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-                <span style="font-size:12px;color:var(--t2)">Month 12</span>
-                <span style="font-size:14px;font-weight:700;color:var(--t1)">$45k MRR</span>
+                <span style="font-size:12px;color:var(--t2)">Month 12 · 10 groups</span>
+                <span style="font-size:14px;font-weight:700;color:var(--t1)">$75k MRR</span>
               </div>
               <div class="progress-bar"><div class="progress-fill" style="width:55%;background:var(--violet)"></div></div>
             </div>
             <div>
               <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
                 <span style="font-size:12px;color:var(--t2)">Year 1 ARR run rate</span>
-                <span style="font-size:14px;font-weight:700;color:var(--emerald)">$540k</span>
+                <span style="font-size:14px;font-weight:700;color:var(--emerald)">$900k</span>
               </div>
               <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--emerald)"></div></div>
             </div>
@@ -661,7 +685,7 @@
           <div class="card" style="text-align:center;padding:22px;background:rgba(167,139,250,0.05);border-color:rgba(167,139,250,0.2)">
             <div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">SAM — Independent Groups</div>
             <div style="font-size:40px;font-weight:900;letter-spacing:-0.04em;color:var(--violet)">~$197M</div>
-            <div style="font-size:11px;color:var(--t3);margin-top:4px">Groups of 5–30 rads · $3/study model</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:4px">Groups of 5–30 rads · hybrid model</div>
           </div>
           <div class="card" style="text-align:center;padding:22px;background:rgba(52,211,153,0.05);border-color:rgba(52,211,153,0.2)">
             <div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">SOM — Year 1–3 Target</div>
@@ -685,7 +709,9 @@
               <tr><td>US radiologists</td><td style="text-align:right"><strong>35,000</strong></td></tr>
               <tr><td>Studies per radiologist / yr</td><td style="text-align:right"><strong>~6,000</strong></td></tr>
               <tr><td>Total studies / yr (US)</td><td style="text-align:right"><strong>~210M</strong></td></tr>
-              <tr><td>At $3/study — full capture</td><td style="text-align:right"><strong style="color:var(--blue)">$630M</strong></td></tr>
+              <tr><td>Routing tier ($3 × 210M studies)</td><td style="text-align:right"><strong style="color:var(--blue)">$630M</strong></td></tr>
+              <tr><td>Billing tier (1.5% of $20.2B)</td><td style="text-align:right"><strong style="color:var(--emerald)">$303M</strong></td></tr>
+              <tr><td>Full platform — blended ~$5/study</td><td style="text-align:right"><strong style="color:var(--violet)">~$1.0B</strong></td></tr>
               <tr><td>Teleradiology market (2023)</td><td style="text-align:right"><strong>$957M growing</strong></td></tr>
             </table>
           </div>
@@ -853,9 +879,9 @@
           <div class="card">
             <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);margin-bottom:14px">18-Month Milestones</div>
             <div class="check-item"><span style="color:var(--blue);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M3</span><div>First paying group live · HIPAA BAA signed</div></div>
-            <div class="check-item"><span style="color:var(--violet);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M6</span><div>5 groups · $9k MRR · denial mgmt in beta</div></div>
-            <div class="check-item"><span style="color:var(--emerald);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M12</span><div>10 groups · $45k MRR · Series A ready</div></div>
-            <div class="check-item"><span style="color:var(--emerald);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M18</span><div>$540k ARR · proven GTM · expand to health systems</div></div>
+            <div class="check-item"><span style="color:var(--violet);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M6</span><div>5 groups · $15k MRR · denial mgmt in beta</div></div>
+            <div class="check-item"><span style="color:var(--emerald);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M12</span><div>10 groups · $75k MRR · Series A ready</div></div>
+            <div class="check-item"><span style="color:var(--emerald);font-weight:700;font-size:11px;width:48px;flex-shrink:0">M18</span><div>$900k ARR · proven GTM · expand to health systems</div></div>
           </div>
         </div>
 
@@ -863,7 +889,7 @@
           <div class="card" style="text-align:center;padding:32px;background:rgba(61,126,246,0.04);border-color:rgba(61,126,246,0.3)">
             <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Seed Round</div>
             <div class="ask-amount grad">$2.5M</div>
-            <div style="font-size:13px;color:var(--t2);margin-top:10px">18-month runway to $45k MRR</div>
+            <div style="font-size:13px;color:var(--t2);margin-top:10px">18-month runway to $75k MRR</div>
           </div>
 
           <div class="card" style="text-align:center;padding:24px;background:rgba(52,211,153,0.04);border-color:rgba(52,211,153,0.25)">
