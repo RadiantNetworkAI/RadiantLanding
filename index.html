@@ -24,9 +24,9 @@
       --emerald:   #34d399;
       --cyan:      #22d3ee;
       --amber:     #fbbf24;
-      --text-1:    #e2e8f0;
-      --text-2:    #94a3b8;
-      --text-3:    #475569;
+      --text-1:    #edf2f7;
+      --text-2:    #a8b8cc;
+      --text-3:    #6e8099;
     }
 
     html { scroll-behavior: smooth; }
@@ -209,9 +209,9 @@
 
     /* ── Section header ── */
     .section-label {
-      font-size: 10px; font-weight: 600;
+      font-size: 11px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.14em;
-      color: var(--text-3);
+      color: var(--text-2);
       margin-bottom: 10px;
     }
     .section-title {
@@ -256,8 +256,8 @@
     }
     .pillar-icon svg { width: 16px; height: 16px; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
     .pillar-label { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
-    .pillar-tagline { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 10px; line-height: 1.4; }
-    .pillar-body { font-size: 12px; color: var(--text-3); line-height: 1.6; margin-bottom: 14px; }
+    .pillar-tagline { font-size: 13px; font-weight: 600; color: var(--text-1); margin-bottom: 10px; line-height: 1.4; }
+    .pillar-body { font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; }
     .pillar-points { list-style: none; display: flex; flex-direction: column; gap: 5px; }
     .pillar-points li {
       display: flex; align-items: center; gap: 7px;
@@ -289,22 +289,22 @@
     .card-header {
       padding: 14px 20px;
       border-bottom: 1px solid var(--border);
-      font-size: 11px; font-weight: 600;
+      font-size: 11px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--text-3);
+      color: var(--text-2);
       display: flex; align-items: center; gap: 7px;
     }
     .card-header svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
     .card-body { padding: 20px; }
     .pain-item {
       display: flex; align-items: flex-start; gap: 10px;
-      padding: 10px 12px; border-radius: 7px;
-      background: rgba(239,68,68,0.04);
-      border: 1px solid rgba(239,68,68,0.12);
+      padding: 12px 14px; border-radius: 7px;
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
       margin-bottom: 8px;
     }
-    .pain-dot { width: 5px; height: 5px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 5px; }
-    .pain-text { font-size: 11px; color: var(--text-2); line-height: 1.5; }
+    .pain-dot { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 6px; }
+    .pain-text { font-size: 13px; color: var(--text-1); line-height: 1.55; font-weight: 500; }
     .diff-item {
       display: flex; align-items: center; gap: 10px;
       padding: 9px 12px; border-radius: 7px;
@@ -320,7 +320,7 @@
     .diff-item.us .diff-dot { background: var(--emerald); }
     .diff-name { font-size: 11px; font-weight: 600; color: var(--text-2); width: 130px; flex-shrink: 0; }
     .diff-item.us .diff-name { color: var(--emerald); }
-    .diff-desc { font-size: 10px; color: var(--text-3); }
+    .diff-desc { font-size: 12px; color: var(--text-2); }
 
     /* ── Integration flow ── */
     .flow {
@@ -331,9 +331,9 @@
       padding: 8px 12px; border-radius: 7px;
       text-align: center;
     }
-    .flow-node-label { font-size: 9px; font-weight: 700; }
-    .flow-node-sub   { font-size: 8px; color: var(--text-3); margin-top: 2px; }
-    .flow-arrow { color: var(--text-3); font-size: 12px; flex-shrink: 0; }
+    .flow-node-label { font-size: 11px; font-weight: 700; }
+    .flow-node-sub   { font-size: 10px; color: var(--text-2); margin-top: 2px; }
+    .flow-arrow { color: var(--text-2); font-size: 13px; flex-shrink: 0; }
     .vendor-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
       margin-bottom: 20px;
@@ -343,13 +343,13 @@
       background: rgba(34,211,238,0.04);
       border: 1px solid rgba(34,211,238,0.15);
     }
-    .vendor-name { font-size: 11px; font-weight: 600; color: var(--cyan); margin-bottom: 2px; }
-    .vendor-desc { font-size: 9px; color: var(--text-3); }
+    .vendor-name { font-size: 12px; font-weight: 600; color: var(--cyan); margin-bottom: 2px; }
+    .vendor-desc { font-size: 11px; color: var(--text-2); }
     .pull-quote {
       padding: 14px 18px; border-radius: 8px;
       border-left: 3px solid;
-      font-size: 12px; color: var(--text-2);
-      line-height: 1.6; font-style: italic;
+      font-size: 14px; color: var(--text-1);
+      line-height: 1.65; font-style: italic;
     }
 
     /* ── Where we are ── */
@@ -358,9 +358,9 @@
       gap: 16px; margin-bottom: 20px;
     }
     .stage-item { }
-    .stage-label { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .stage-label { font-size: 11px; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; font-weight: 600; }
     .stage-value { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
-    .stage-sub   { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+    .stage-sub   { font-size: 11px; color: var(--text-2); margin-top: 2px; }
 
     /* ── CTA ── */
     .cta-section {
