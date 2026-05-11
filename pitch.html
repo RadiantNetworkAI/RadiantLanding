@@ -22,9 +22,9 @@
       --cyan:     #22d3ee;
       --amber:    #fbbf24;
       --red:      #f87171;
-      --t1:       #e2e8f0;
-      --t2:       #94a3b8;
-      --t3:       #475569;
+      --t1:       #edf2f7;
+      --t2:       #a8b8cc;
+      --t3:       #6e8099;
       --mono:     'JetBrains Mono', monospace;
     }
 
@@ -105,8 +105,8 @@
 
     /* ── Typography ── */
     .eyebrow {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--t3); margin-bottom: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--t2); margin-bottom: 10px;
     }
     .slide-title {
       font-size: clamp(28px, 3.5vw, 44px);
@@ -133,17 +133,17 @@
     .pain {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 14px 16px; border-radius: 9px;
-      background: rgba(248,113,113,0.05);
-      border: 1px solid rgba(248,113,113,0.18);
+      background: rgba(248,113,113,0.07);
+      border: 1px solid rgba(248,113,113,0.25);
       margin-bottom: 10px;
     }
     .pain:last-child { margin-bottom: 0; }
     .pain-num {
-      font-size: 10px; font-weight: 800; font-family: var(--mono);
+      font-size: 11px; font-weight: 800; font-family: var(--mono);
       color: var(--red); width: 18px; flex-shrink: 0; padding-top: 1px;
     }
-    .pain-text { font-size: 13px; color: var(--t2); line-height: 1.5; }
-    .pain-text strong { color: var(--t1); font-weight: 600; }
+    .pain-text { font-size: 14px; color: var(--t1); line-height: 1.55; font-weight: 500; }
+    .pain-text strong { color: #fff; font-weight: 700; }
 
     /* ── Pipeline ── */
     .pipeline {
@@ -165,14 +165,14 @@
     }
     .pipe-stage:last-child::after { display: none; }
     .pipe-num {
-      font-size: 9px; font-weight: 700; font-family: var(--mono);
-      margin-bottom: 6px; opacity: 0.6;
+      font-size: 10px; font-weight: 700; font-family: var(--mono);
+      margin-bottom: 6px; opacity: 0.7;
     }
     .pipe-icon {
       font-size: 18px; margin-bottom: 6px; display: block;
     }
-    .pipe-label { font-size: 11px; font-weight: 700; margin-bottom: 3px; }
-    .pipe-sub { font-size: 9px; color: var(--t3); line-height: 1.4; }
+    .pipe-label { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+    .pipe-sub { font-size: 11px; color: var(--t2); line-height: 1.4; }
 
     /* ── Metric blocks ── */
     .metric-block { text-align: center; padding: 20px 16px; }
@@ -181,18 +181,18 @@
       letter-spacing: -0.03em; line-height: 1;
       margin-bottom: 6px;
     }
-    .metric-label { font-size: 10px; color: var(--t3); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4; }
-    .metric-sub { font-size: 10px; color: var(--t3); font-family: var(--mono); margin-top: 3px; }
+    .metric-label { font-size: 11px; color: var(--t2); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4; font-weight: 600; }
+    .metric-sub { font-size: 11px; color: var(--t2); font-family: var(--mono); margin-top: 3px; }
 
     /* ── Checklist ── */
     .check-item {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 13px; color: var(--t2); padding: 8px 0;
+      font-size: 13px; color: var(--t1); padding: 8px 0;
       border-bottom: 1px solid var(--border); line-height: 1.5;
     }
     .check-item:last-child { border-bottom: none; }
     .check-icon { color: var(--emerald); flex-shrink: 0; font-size: 13px; padding-top: 1px; }
-    .check-item strong { color: var(--t1); font-weight: 600; }
+    .check-item strong { color: #fff; font-weight: 700; }
 
     /* ── Tag ── */
     .tag {
@@ -241,15 +241,15 @@
     }
 
     /* ── Table ── */
-    .pitch-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .pitch-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .pitch-table th {
       text-align: left; padding: 8px 12px;
-      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--t3); border-bottom: 1px solid var(--border);
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--t2); border-bottom: 1px solid var(--border);
     }
-    .pitch-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--t2); }
+    .pitch-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--t1); }
     .pitch-table tr:last-child td { border-bottom: none; }
-    .pitch-table td strong { color: var(--t1); font-weight: 600; }
+    .pitch-table td strong { color: #fff; font-weight: 600; }
 
     /* ── Ask ── */
     .ask-amount {
