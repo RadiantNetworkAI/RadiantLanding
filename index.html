@@ -424,6 +424,71 @@
 
     /* ── Cyan section accent ── */
     .cyan-border { border-color: rgba(34,211,238,0.2) !important; }
+
+    /* ══════════════════════ MOBILE ══════════════════════ */
+    @media (max-width: 768px) {
+      /* Nav */
+      .logo-domain { display: none; }
+      .nav-inner { padding: 0 16px; }
+
+      /* Hero */
+      .hero { padding: 100px 0 56px; }
+      .hero img[style] { width: 120px !important; height: 120px !important;
+        border-radius: 22px !important; margin-bottom: 24px !important; }
+      .hero-sub { font-size: 15px; }
+
+      /* Sections */
+      section { padding: 52px 0; }
+      .section-head { margin-bottom: 28px; }
+      .section-sub { font-size: 14px; }
+      .wrap { padding: 0 16px; }
+
+      /* Pillars: auto-fit already handles this but ensure 1 col below 260px */
+      .pillars { grid-template-columns: 1fr; }
+      .pillar { padding: 22px 18px; }
+
+      /* Vendor grid */
+      .vendor-grid { grid-template-columns: 1fr 1fr !important; }
+
+      /* Flow diagram: stack vertically */
+      .flow { flex-direction: column; align-items: flex-start; gap: 2px; margin: 14px 0 18px; }
+      .flow-arrow { transform: rotate(90deg); align-self: center; margin: 2px 0; }
+
+      /* Split: already 1-col at 640px, enforce at 768px too */
+      .split { grid-template-columns: 1fr; }
+
+      /* Cards */
+      .card-body { padding: 16px; }
+
+      /* Stage grid */
+      .stage-grid { grid-template-columns: 1fr; gap: 10px; }
+
+      /* Pricing cards padding */
+      .card { border-radius: 10px; }
+
+      /* CTA */
+      .cta-section { padding: 52px 20px; }
+
+      /* Pull quote */
+      .pull-quote { font-size: 13px; }
+    }
+
+    @media (max-width: 480px) {
+      /* Nav: hide Investor Deck pill, shorten CTA */
+      .nav-inner > div > a:not(.nav-cta) { display: none; }
+      .nav-cta { font-size: 11px; padding: 6px 12px; }
+
+      /* Hero: tighter */
+      .hero { padding: 86px 0 44px; }
+      .hero img[style] { width: 96px !important; height: 96px !important; margin-bottom: 20px !important; }
+
+      /* Vendor: single col */
+      .vendor-grid { grid-template-columns: 1fr !important; }
+
+      /* Metrics: 2×2 */
+      .metrics { grid-template-columns: repeat(2, 1fr) !important; }
+      .metric { padding: 18px 12px; }
+    }
   </style>
 </head>
 <body>
